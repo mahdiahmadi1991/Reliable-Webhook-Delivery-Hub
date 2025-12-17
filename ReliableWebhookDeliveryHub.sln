@@ -2,13 +2,29 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "src\\Api\\Api.csproj", "{A84F11C3-4F6C-4EA4-B073-03F75671F51E}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0E4A7FC8-57A3-4A61-888D-5B7BD3D5DC70}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "src\\Domain\\Domain.csproj", "{F353A3FE-0639-4020-9D23-6AC0A0D3A602}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0.Frameworks", "0.Frameworks", "{E931D746-34B1-4C93-A895-6B27461E2B91}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "src\\Application\\Application.csproj", "{7AA54F41-98B4-43F5-8BEC-F149CACA8EAE}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.Domain", "1.Domain", "{18413ADA-A6CF-49B0-8A51-005FF1E3D4D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "src\\Infrastructure\\Infrastructure.csproj", "{71FD095F-A09B-4A74-BEC3-872646E8CC6F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReliableWebhookDeliveryHub.Domain", "src\\1.Domain\\ReliableWebhookDeliveryHub.Domain\\ReliableWebhookDeliveryHub.Domain.csproj", "{F353A3FE-0639-4020-9D23-6AC0A0D3A602}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.Infrastructures", "2.Infrastructures", "{05D0EC5D-2E50-4E8F-8E10-1A1E5D0A6A9C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReliableWebhookDeliveryHub.Infrastructure", "src\\2.Infrastructures\\ReliableWebhookDeliveryHub.Infrastructure\\ReliableWebhookDeliveryHub.Infrastructure.csproj", "{71FD095F-A09B-4A74-BEC3-872646E8CC6F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.Applications", "3.Applications", "{B26E40F7-8B2C-4D46-9C01-8415A15132F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReliableWebhookDeliveryHub.Application", "src\\3.Applications\\ReliableWebhookDeliveryHub.Application\\ReliableWebhookDeliveryHub.Application.csproj", "{7AA54F41-98B4-43F5-8BEC-F149CACA8EAE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.Presentations", "4.Presentations", "{CA8F3E85-AE93-4F82-9E5D-9A24E06405B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReliableWebhookDeliveryHub.WebApi", "src\\4.Presentations\\ReliableWebhookDeliveryHub.WebApi\\ReliableWebhookDeliveryHub.WebApi.csproj", "{A84F11C3-4F6C-4EA4-B073-03F75671F51E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.Shared", "5.Shared", "{81C5B7D5-3A64-4D04-9E4E-6A0B1EB7D64F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{9EAF9C13-AD5A-4BA5-8E16-BC18FF76D4CC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "tests\\UnitTests\\UnitTests.csproj", "{89BD2AD1-C8C1-4AD7-B09B-094273A2D62F}"
 EndProject
@@ -47,6 +63,20 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E931D746-34B1-4C93-A895-6B27461E2B91} = {0E4A7FC8-57A3-4A61-888D-5B7BD3D5DC70}
+		{18413ADA-A6CF-49B0-8A51-005FF1E3D4D5} = {0E4A7FC8-57A3-4A61-888D-5B7BD3D5DC70}
+		{05D0EC5D-2E50-4E8F-8E10-1A1E5D0A6A9C} = {0E4A7FC8-57A3-4A61-888D-5B7BD3D5DC70}
+		{B26E40F7-8B2C-4D46-9C01-8415A15132F1} = {0E4A7FC8-57A3-4A61-888D-5B7BD3D5DC70}
+		{CA8F3E85-AE93-4F82-9E5D-9A24E06405B4} = {0E4A7FC8-57A3-4A61-888D-5B7BD3D5DC70}
+		{81C5B7D5-3A64-4D04-9E4E-6A0B1EB7D64F} = {0E4A7FC8-57A3-4A61-888D-5B7BD3D5DC70}
+		{F353A3FE-0639-4020-9D23-6AC0A0D3A602} = {18413ADA-A6CF-49B0-8A51-005FF1E3D4D5}
+		{71FD095F-A09B-4A74-BEC3-872646E8CC6F} = {05D0EC5D-2E50-4E8F-8E10-1A1E5D0A6A9C}
+		{7AA54F41-98B4-43F5-8BEC-F149CACA8EAE} = {B26E40F7-8B2C-4D46-9C01-8415A15132F1}
+		{A84F11C3-4F6C-4EA4-B073-03F75671F51E} = {CA8F3E85-AE93-4F82-9E5D-9A24E06405B4}
+		{89BD2AD1-C8C1-4AD7-B09B-094273A2D62F} = {9EAF9C13-AD5A-4BA5-8E16-BC18FF76D4CC}
+		{DF74DDAC-1B62-43D1-80D7-F114714CB213} = {9EAF9C13-AD5A-4BA5-8E16-BC18FF76D4CC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {13EDBB9D-2E9D-49C3-8D8A-8732B500D5D1}

@@ -13,7 +13,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.7" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="../Application/Application.csproj" />
-    <ProjectReference Include="../Domain/Domain.csproj" />
+    <ProjectReference Include="../../3.Applications/ReliableWebhookDeliveryHub.Application/ReliableWebhookDeliveryHub.Application.csproj" />
+    <ProjectReference Include="../../1.Domain/ReliableWebhookDeliveryHub.Domain/ReliableWebhookDeliveryHub.Domain.csproj" />
   </ItemGroup>
 </Project>

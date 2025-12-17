@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
   <PropertyGroup>
-    <RootNamespace>ReliableWebhookDeliveryHub.Api</RootNamespace>
-    <AssemblyName>ReliableWebhookDeliveryHub.Api</AssemblyName>
+    <RootNamespace>ReliableWebhookDeliveryHub.WebApi</RootNamespace>
+    <AssemblyName>ReliableWebhookDeliveryHub.WebApi</AssemblyName>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="OpenTelemetry.Exporter.Console" Version="1.9.0" />
@@ -13,7 +13,7 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="../Application/Application.csproj" />
-    <ProjectReference Include="../Infrastructure/Infrastructure.csproj" />
+    <ProjectReference Include="../../3.Applications/ReliableWebhookDeliveryHub.Application/ReliableWebhookDeliveryHub.Application.csproj" />
+    <ProjectReference Include="../../2.Infrastructures/ReliableWebhookDeliveryHub.Infrastructure/ReliableWebhookDeliveryHub.Infrastructure.csproj" />
   </ItemGroup>
 </Project>
