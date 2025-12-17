@@ -12,13 +12,15 @@ This repository hosts the scaffolding for a minimal API-based solution targeting
    docker compose up -d
    ```
    SQL Server will listen on `localhost:14333` and Redis on `localhost:6380`.
-3. Run the API:
+3. Run the API (loads `.env` automatically in Development):
    ```bash
    dotnet run --project src/Api
    ```
    The listening port is shown in the console output.
-4. Verify the health endpoint:
-   - Send a `GET` request to `http://localhost:<api-port>/` to receive `{ "status": "running" }`.
+4. Explore the API:
+   - Swagger UI: `http://localhost:<api-port>/swagger`
+   - Health check: `http://localhost:<api-port>/health`
+   - Root ping: `http://localhost:<api-port>/` returns `{ "status": "running" }`
 
 ## Projects
 - `src/Api`: Minimal API host.
