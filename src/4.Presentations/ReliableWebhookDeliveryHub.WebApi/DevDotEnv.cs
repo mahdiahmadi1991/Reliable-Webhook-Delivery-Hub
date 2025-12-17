@@ -1,4 +1,4 @@
-namespace ReliableWebhookDeliveryHub.Api;
+namespace ReliableWebhookDeliveryHub.WebApi;
 
 public static class DevDotEnv
 {

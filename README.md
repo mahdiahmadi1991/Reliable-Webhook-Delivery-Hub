@@ -14,7 +14,7 @@ This repository hosts the scaffolding for a minimal API-based solution targeting
    SQL Server will listen on `localhost:14333` and Redis on `localhost:6380`.
 3. Run the API (loads `.env` automatically in Development):
    ```bash
-   dotnet run --project src/Api
+   dotnet run --project src/4.Presentations/ReliableWebhookDeliveryHub.WebApi
    ```
    The listening port is shown in the console output.
 4. Explore the API:
@@ -23,10 +23,10 @@ This repository hosts the scaffolding for a minimal API-based solution targeting
    - Root ping: `http://localhost:<api-port>/` returns `{ "status": "running" }`
 
 ## Projects
-- `src/Api`: Minimal API host.
-- `src/Application`: Application layer placeholders.
-- `src/Domain`: Domain model placeholders.
-- `src/Infrastructure`: Infrastructure placeholders.
+- `src/4.Presentations/ReliableWebhookDeliveryHub.WebApi`: Minimal API host.
+- `src/3.Applications/ReliableWebhookDeliveryHub.Application`: Application layer placeholders.
+- `src/1.Domain/ReliableWebhookDeliveryHub.Domain`: Domain model placeholders.
+- `src/2.Infrastructures/ReliableWebhookDeliveryHub.Infrastructure`: Infrastructure placeholders.
 - `tests/UnitTests`: xUnit unit tests.
 - `tests/IntegrationTests`: xUnit integration tests.
 

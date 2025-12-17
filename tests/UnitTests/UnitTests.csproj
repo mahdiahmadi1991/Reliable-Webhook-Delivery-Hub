@@ -5,8 +5,8 @@
     <AssemblyName>ReliableWebhookDeliveryHub.UnitTests</AssemblyName>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="../../src/Application/Application.csproj" />
-    <ProjectReference Include="../../src/Domain/Domain.csproj" />
+    <ProjectReference Include="../../src/3.Applications/ReliableWebhookDeliveryHub.Application/ReliableWebhookDeliveryHub.Application.csproj" />
+    <ProjectReference Include="../../src/1.Domain/ReliableWebhookDeliveryHub.Domain/ReliableWebhookDeliveryHub.Domain.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.0" />

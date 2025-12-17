@@ -5,7 +5,7 @@
     <AssemblyName>ReliableWebhookDeliveryHub.IntegrationTests</AssemblyName>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="../../src/Api/Api.csproj" />
+    <ProjectReference Include="../../src/4.Presentations/ReliableWebhookDeliveryHub.WebApi/ReliableWebhookDeliveryHub.WebApi.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="DotNet.Testcontainers" Version="3.11.0" />

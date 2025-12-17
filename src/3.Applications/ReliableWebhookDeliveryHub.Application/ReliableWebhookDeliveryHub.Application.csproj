@@ -4,6 +4,6 @@
     <AssemblyName>ReliableWebhookDeliveryHub.Application</AssemblyName>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="../Domain/Domain.csproj" />
+    <ProjectReference Include="../../1.Domain/ReliableWebhookDeliveryHub.Domain/ReliableWebhookDeliveryHub.Domain.csproj" />
   </ItemGroup>
 </Project>

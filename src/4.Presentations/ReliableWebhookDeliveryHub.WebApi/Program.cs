@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
-using ReliableWebhookDeliveryHub.Api;
+using ReliableWebhookDeliveryHub.WebApi;
 using ReliableWebhookDeliveryHub.Infrastructure.Persistence;
 using StackExchange.Redis;
 
