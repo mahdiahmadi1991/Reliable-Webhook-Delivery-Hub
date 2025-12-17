@@ -1,4 +1,4 @@
-using System.Linq;
+﻿using System.Linq;
 using System.Net;
 using System.Net.Http.Json;
 using System.Security.Cryptography;
@@ -6,6 +6,7 @@ using System.Text.Json;
 using Microsoft.Data.SqlClient;
 using ReliableWebhookDeliveryHub.Application.Security;
 using ReliableWebhookDeliveryHub.IntegrationTests.Infrastructure;
+using Xunit;
 
 namespace ReliableWebhookDeliveryHub.IntegrationTests;
 

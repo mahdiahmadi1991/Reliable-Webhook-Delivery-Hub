@@ -1,7 +1,7 @@
-using System.Data.Common;
+﻿using System.Data.Common;
 using Microsoft.Data.SqlClient;
-using DotNet.Testcontainers.Builders;
-using DotNet.Testcontainers.Containers;
+using Testcontainers.MsSql;
+using Testcontainers.Redis;
 using StackExchange.Redis;
 using Xunit;
 
@@ -11,8 +11,8 @@ public class IntegrationTestFixture : IAsyncLifetime
 {
     private const string SqlSaPassword = "P@ssword123456!";
 
-    private IContainer? _sqlContainer;
-    private IContainer? _redisContainer;
+    private MsSqlContainer? _sqlContainer;
+    private RedisContainer? _redisContainer;
 
     public string SqlConnectionString { get; private set; } = string.Empty;
 
@@ -20,8 +20,15 @@ public class IntegrationTestFixture : IAsyncLifetime
 
     public async Task InitializeAsync()
     {
-        _sqlContainer = BuildSqlContainer();
-        _redisContainer = BuildRedisContainer();
+        _sqlContainer = new MsSqlBuilder()
+            .WithPassword(SqlSaPassword)
+            .WithPortBinding(1433, true)
+            .Build();
+
+        _redisContainer = new RedisBuilder()
+            .WithImage("redis:7-alpine")
+            .WithPortBinding(6379, true)
+            .Build();
 
         await Task.WhenAll(_sqlContainer.StartAsync(), _redisContainer.StartAsync());
 
@@ -48,26 +55,6 @@ public class IntegrationTestFixture : IAsyncLifetime
         {
             await _redisContainer.DisposeAsync();
         }
-    }
-
-    private static IContainer BuildSqlContainer()
-    {
-        return new TestcontainersBuilder<TestcontainersContainer>()
-            .WithImage("mcr.microsoft.com/mssql/server:2022-latest")
-            .WithEnvironment("ACCEPT_EULA", "Y")
-            .WithEnvironment("MSSQL_PID", "Developer")
-            .WithEnvironment("MSSQL_SA_PASSWORD", SqlSaPassword)
-            .WithPortBinding(1433, true)
-            .WithCreateContainerParametersModifier(parameters => parameters.Platform = "linux/amd64")
-            .Build();
-    }
-
-    private static IContainer BuildRedisContainer()
-    {
-        return new TestcontainersBuilder<TestcontainersContainer>()
-            .WithImage("redis:7-alpine")
-            .WithPortBinding(6379, true)
-            .Build();
     }
 
     private static async Task EnsureSqlReadyAsync(string host, int port)

@@ -1,7 +1,8 @@
-using System.Net;
+﻿using System.Net;
 using System.Text.Json;
 using Microsoft.Data.SqlClient;
 using ReliableWebhookDeliveryHub.IntegrationTests.Infrastructure;
+using Xunit;
 
 namespace ReliableWebhookDeliveryHub.IntegrationTests;
 
@@ -36,7 +37,7 @@ public class HealthEndpointTests : IClassFixture<IntegrationTestFixture>
         await connection.OpenAsync();
         await using var command = connection.CreateCommand();
         command.CommandText = "SELECT COUNT(*) FROM [__EFMigrationsHistory]";
-        var result = (int)await command.ExecuteScalarAsync();
+        var result = (int?)await command.ExecuteScalarAsync();
 
         Assert.True(result > 0);
     }
