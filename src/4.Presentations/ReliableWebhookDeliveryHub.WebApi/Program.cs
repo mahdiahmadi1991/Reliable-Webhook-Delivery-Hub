@@ -5,6 +5,8 @@ using OpenTelemetry.Metrics;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 using ReliableWebhookDeliveryHub.WebApi;
+using ReliableWebhookDeliveryHub.WebApi.Auditing;
+using ReliableWebhookDeliveryHub.WebApi.Destinations;
 using ReliableWebhookDeliveryHub.WebApi.Security;
 using ReliableWebhookDeliveryHub.Application.Security;
 using ReliableWebhookDeliveryHub.Domain.Tenants;
@@ -30,11 +32,12 @@ builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(sqlC
 builder.Services.AddSingleton<IConnectionMultiplexer>(_ => ConnectionMultiplexer.Connect(redisConnectionString));
 builder.Services.AddScoped<ApiKeyService>();
 builder.Services.AddScoped<ITenantContext, TenantContext>();
+builder.Services.AddScoped<AuditWriter>();
 
+var dataProtectionBuilder = builder.Services.AddDataProtection();
 if (builder.Environment.IsDevelopment())
 {
-    builder.Services.AddDataProtection()
-        .PersistKeysToFileSystem(new DirectoryInfo(Path.Combine(Directory.GetCurrentDirectory(), ".dpkeys")));
+    dataProtectionBuilder.PersistKeysToFileSystem(new DirectoryInfo(Path.Combine(Directory.GetCurrentDirectory(), ".dpkeys")));
 }
 
 builder.Services.AddOpenTelemetry()
@@ -146,6 +149,8 @@ if (app.Environment.IsDevelopment())
         return Results.Json(new { tenantId, apiKey = generatedKey.ApiKey }, statusCode: StatusCodes.Status201Created);
     });
 }
+
+app.MapDestinationsEndpoints();
 
 await ApplyMigrationsInDevelopmentAsync(app);
 
