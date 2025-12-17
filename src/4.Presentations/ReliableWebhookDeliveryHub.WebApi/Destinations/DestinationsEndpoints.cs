@@ -1,4 +1,4 @@
-using System.Text.Json;
+﻿using System.Text.Json;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
@@ -320,7 +320,7 @@ internal static class DestinationsEndpoints
             return false;
         }
 
-        return uri.Scheme is Uri.UriSchemeHttp or Uri.UriSchemeHttps;
+        return uri.Scheme == Uri.UriSchemeHttp || uri.Scheme == Uri.UriSchemeHttps;
     }
 
     private static bool AreHeadersValid(Dictionary<string, string>? headers)
