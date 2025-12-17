@@ -1,0 +1,6 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace>ReliableWebhookDeliveryHub.Domain</RootNamespace>
+    <AssemblyName>ReliableWebhookDeliveryHub.Domain</AssemblyName>
+  </PropertyGroup>
+</Project>
