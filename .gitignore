@@ -416,3 +416,8 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+# Repository-specific ignores
+.env
+.dpkeys/
+**/bin/
+**/obj/
