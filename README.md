@@ -2,6 +2,8 @@
 
 This repository hosts the scaffolding for a minimal API-based solution targeting .NET 10.
 
+_CI badge placeholder (add repository-specific badge URL once available)._
+
 ## Getting started
 1. Copy the example environment file and provide a strong SQL Server password:
    ```bash
@@ -21,6 +23,19 @@ This repository hosts the scaffolding for a minimal API-based solution targeting
    - Swagger UI: `http://localhost:<api-port>/swagger`
    - Health check: `http://localhost:<api-port>/health`
    - Root ping: `http://localhost:<api-port>/` returns `{ "status": "running" }`
+
+## Running tests
+- Prerequisites:
+  - Docker (required for integration tests).
+  - `.env` file with `MSSQL_SA_PASSWORD` defined (see steps above).
+- Using Docker-based runner (no local .NET SDK required):
+  ```bash
+  ./scripts/test.sh
+  ```
+- Using local .NET SDK:
+  ```bash
+  dotnet test
+  ```
 
 ## Projects
 - `src/4.Presentations/ReliableWebhookDeliveryHub.WebApi`: Minimal API host.

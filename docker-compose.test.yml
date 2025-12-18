@@ -1,0 +1,23 @@
+version: "3.9"
+
+services:
+  sqlserver:
+    environment:
+      MSSQL_SA_PASSWORD: ${MSSQL_SA_PASSWORD:?MSSQL_SA_PASSWORD is required}
+
+  redis:
+    image: redis:7-alpine
+
+  tests:
+    image: mcr.microsoft.com/dotnet/sdk:10.0
+    working_dir: /repo
+    volumes:
+      - ./:/repo
+    depends_on:
+      - sqlserver
+      - redis
+    environment:
+      ConnectionStrings__SqlServer: Server=sqlserver,1433;Database=hub;User Id=sa;Password=${MSSQL_SA_PASSWORD};Encrypt=True;TrustServerCertificate=True
+      Redis__ConnectionString: redis:6379
+      DOTNET_CLI_TELEMETRY_OPTOUT: "1"
+    command: ["dotnet", "test", "--configuration", "Release"]

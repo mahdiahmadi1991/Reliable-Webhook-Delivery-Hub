@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+env:
+  DOTNET_CLI_TELEMETRY_OPTOUT: "1"
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: "1"
+  MSSQL_SA_PASSWORD: P@ssword123456!
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Generate .env for compose
+        run: |
+          cat <<EOF > .env
+          MSSQL_SA_PASSWORD=${MSSQL_SA_PASSWORD}
+          EOF
+
+      - name: Start dependencies
+        run: docker compose up -d
+
+      - name: Build
+        run: dotnet build --configuration Release
+
+      - name: Test
+        env:
+          ConnectionStrings__SqlServer: Server=localhost,14333;Database=hub;User Id=sa;Password=${{ env.MSSQL_SA_PASSWORD }};Encrypt=True;TrustServerCertificate=True
+          Redis__ConnectionString: localhost:6380
+        run: dotnet test --configuration Release
+
+      - name: Shutdown dependencies
+        if: always()
+        run: docker compose down -v
